@@ -72,6 +72,42 @@ app.get('/reset-table', function (req, res, next) {
 
 
 
+app.get('/edit-form', function (req, res, next) {
+  var context = {};
+  context.id = req.query.id
+  context.name = req.query.name
+  context.reps = req.query.reps
+  context.weight = req.query.weight
+  context.date = req.query.date
+  context.unit = req.query.unit
+  res.render('edit-form', context);
+});
+
+
+///safe-update?id=1&name=The+Task&done=false
+app.get('/edit', function (req, res, next) {
+  var context = {};
+  mysql.pool.query("SELECT * FROM exercise WHERE id=?", [req.query.id], function (err, result) {
+    if (err) {
+      next(err);
+      return;
+    }
+    if (result.length == 1) {
+      var curVals = result[0];
+      mysql.pool.query("UPDATE exercise SET name=?,reps=?,weight=?,date=?,unit=? WHERE id=? ",
+        [req.query.name || curVals.name, req.query.reps || curVals.reps, req.query.weight || curVals.weight, req.query.date || curVals.date, req.query.unit || curVals.unit, req.query.id],
+        function (err, result) {
+          if (err) {
+            next(err);
+            return;
+          }
+          res.redirect('/');
+        });
+    }
+  });
+});
+
+
 app.use(function (req, res) {
   res.status(404);
   res.render('404');

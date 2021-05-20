@@ -1,7 +1,4 @@
-<h1>MySQL Results:</h1>
-<p>{{status_msg}}</p>
-
-
+<h1>Here's your table</h1>
 
 <div>
 
@@ -24,7 +21,7 @@
 
 
 
-<h1>Here's your table</h1>
+
 <table>
     <thead>
         <tr>
@@ -48,6 +45,9 @@
             <td>{{this.date}}</td>
             <td>{{this.unit}}</td>
             <td><a href="/delete?id={{this.id}}">Delete</a></td>
+            <td><a
+                    href="/delete?id={{this.id}}&name={{this.name}}&reps={{this.reps}}&weight={{this.weight}}&date={{this.date}}&unit={{this.unit}}">Edit</a>
+            </td>
         </tr>
         {{/each}}
     </tbody>
