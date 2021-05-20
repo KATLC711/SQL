@@ -78,7 +78,7 @@ app.get('/edit-form', function (req, res, next) {
   context.name = req.query.name
   context.reps = req.query.reps
   context.weight = req.query.weight
-  context.date = getFormattedDate(req.query.date)
+  context.date = req.query.date
   context.unit = req.query.unit
   //console.log(getFormattedDate(req.query.date))
   res.render('edit-form', context);
