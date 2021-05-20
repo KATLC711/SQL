@@ -133,7 +133,10 @@ app.listen(app.get('port'), function () {
 
 
 
-function getFormattedDate(date) {
+function getFormattedDate(date_unformmated) {
+
+  var date = new Date(date_unformmated)
+
   var year = date.getFullYear();
 
   var month = (1 + date.getMonth()).toString();
