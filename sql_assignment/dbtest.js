@@ -80,7 +80,7 @@ app.get('/edit-form', function (req, res, next) {
   context.weight = req.query.weight
   context.date = req.query.date
   context.unit = req.query.unit
-  console.log(req.query.date)
+  console.log(getFormattedDate(req.query.date))
   res.render('edit-form', context);
 });
 
@@ -123,3 +123,24 @@ app.use(function (err, req, res, next) {
 app.listen(app.get('port'), function () {
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
+
+
+
+
+
+
+
+
+
+
+function getFormattedDate(date) {
+  var year = date.getFullYear();
+
+  var month = (1 + date.getMonth()).toString();
+  month = month.length > 1 ? month : '0' + month;
+
+  var day = date.getDate().toString();
+  day = day.length > 1 ? day : '0' + day;
+
+  return month + '/' + day + '/' + year;
+}
