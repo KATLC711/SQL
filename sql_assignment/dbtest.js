@@ -16,6 +16,7 @@ app.get('/', function (req, res, next) {
       next(err);
       return;
     }
+    console.log(rows)
     context.results = JSON.stringify(rows);
     res.render('home', context);
   });
