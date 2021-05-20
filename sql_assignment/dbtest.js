@@ -126,9 +126,10 @@ app.listen(app.get('port'), function () {
 
 
 function GetFormattedDate(input_date) {
-  var dd = input_date.getDate();
-  var mm = input_date.getMonth() + 1; //January is 0!
-  var yyyy = input_date.getFullYear();
+  var today = Date(input_date)
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear();
 
   if (dd < 10) {
     dd = '0' + dd
