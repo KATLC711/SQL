@@ -22,7 +22,7 @@ app.get('/', function (req, res, next) {
 });
 
 
-
+//insert?name=kevin&reps=10&weight=20&date=2019-01-01&unit=kg
 app.get('/insert', function (req, res, next) {
   var context = {};
   mysql.pool.query("INSERT INTO exercise (`name`,`reps`,`weight`,`date`,`unit`) VALUES (?,?,?,?,?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.unit], function (err, result) {
@@ -43,10 +43,10 @@ app.get('/reset-table', function (req, res, next) {
     var createString = "CREATE TABLE exercise(" +
       "id INT PRIMARY KEY AUTO_INCREMENT," +
       "name VARCHAR(255) NOT NULL," +
-      "reps INT NOT NULL" +
-      "weight INT NOT NULL" +
-      "date DATE" +
-      "unit VARCHAR(5))";
+      "reps INT NOT NULL," +
+      "weight INT NOT NULL," +
+      "date DATE," +
+      "unit VARCHAR(5) NOT NULL)";
     mysql.pool.query(createString, function (err) {
       context.status_msg = "Table reset";
       res.render('home', context);
