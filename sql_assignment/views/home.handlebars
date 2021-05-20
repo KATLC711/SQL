@@ -2,4 +2,31 @@
 <p>{{status_msg}}</p>
 
 <h1>Here's your table</h1>
-{{results}}
+
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>reps</th>
+            <th>weight</th>
+            <th>date</th>
+            <th>unit</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {{#each results}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.reps}}</td>
+            <td>{{this.weight}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.unit}}</td>
+
+        </tr>
+        {{/each}}
+    </tbody>
+
+</table>
