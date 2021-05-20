@@ -8,9 +8,10 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 9752);
 
+
 app.get('/', function (req, res, next) {
   var context = {};
-  mysql.pool.query('SELECT * FROM todo', function (err, rows, fields) {
+  mysql.pool.query('SELECT * FROM exercise', function (err, rows, fields) {
     if (err) {
       next(err);
       return;
@@ -22,43 +23,32 @@ app.get('/', function (req, res, next) {
 
 
 
-app.get('/delete', function (req, res, next) {
-  var context = {};
-  mysql.pool.query("DELETE FROM todo WHERE id=?", [req.query.id], function (err, result) {
-    if (err) {
-      next(err);
-      return;
-    }
-    context.results = "Deleted " + result.changedRows + " rows.";
-    res.render('home', context);
-  });
-});
-
 app.get('/insert', function (req, res, next) {
   var context = {};
-  console.log(req.query.n)
-
-  mysql.pool.query("INSERT INTO todo (`name`,`done`,`due`) VALUES (?,?,?)", [req.query.n, req.query.d, req.query.du], function (err, result) {
+  mysql.pool.query("INSERT INTO todo (`name`,`reps`,`weight`,`date`,`unit`) VALUES (?,?,?,?,?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.unit], function (err, result) {
     if (err) {
       next(err);
       return;
     }
-    context.results = "Inserted id " + result.insertId;
+    context.status_msg = "Inserted id " + result.insertId;
     res.render('home', context);
   });
-
 });
+
+
 
 app.get('/reset-table', function (req, res, next) {
   var context = {};
-  mysql.pool.query("DROP TABLE IF EXISTS todo", function (err) {
-    var createString = "CREATE TABLE todo(" +
+  mysql.pool.query("DROP TABLE IF EXISTS exercise", function (err) {
+    var createString = "CREATE TABLE exercise(" +
       "id INT PRIMARY KEY AUTO_INCREMENT," +
       "name VARCHAR(255) NOT NULL," +
-      "done BOOLEAN," +
-      "due DATE)";
+      "reps INT NOT NULL" +
+      "weight INT NOT NULL" +
+      "date DATE" +
+      "unit VARCHAR(5))";
     mysql.pool.query(createString, function (err) {
-      context.results = "Table reset";
+      context.status_msg = "Table reset";
       res.render('home', context);
     })
   });
