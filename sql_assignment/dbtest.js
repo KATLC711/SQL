@@ -17,7 +17,13 @@ app.get('/', function (req, res, next) {
       return;
     }
     console.log(rows)
-    context.results = JSON.stringify(rows);
+    query_result = []
+    for (i = 0; i < rows.length; i++) {
+      query_result.push({ 'id': rows[i].id, 'name': rows[i].id, 'name': rows[i].id, 'reps': rows[i].reps, 'weight': rows[i].weight, 'unit': rows[i].unit })
+    }
+
+
+    context.results = query_result;
     res.render('home', context);
   });
 });
