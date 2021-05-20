@@ -95,7 +95,7 @@ app.get('/edit', function (req, res, next) {
     }
     if (result.length == 1) {
       var curVals = result[0];
-      console.log(req.query.date)
+      console.log(req.query.date.getDate())
       mysql.pool.query("UPDATE exercise SET name=?,reps=?,weight=?,date=?,unit=? WHERE id=? ",
         [req.query.name || curVals.name, req.query.reps || curVals.reps, req.query.weight || curVals.weight, req.query.date || curVals.date, req.query.unit || curVals.unit, req.query.id],
         function (err, result) {
