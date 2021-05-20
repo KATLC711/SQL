@@ -81,7 +81,7 @@ app.get('/edit-form', function (req, res, next) {
   context.date = req.query.date
   context.unit = req.query.unit
   var Date_0 = Date(req.query.date)
-  console.log(typeof (Date.parse(req.query.date)))
+  console.log(typeof (Date_0))
   res.render('edit-form', context);
 });
 
