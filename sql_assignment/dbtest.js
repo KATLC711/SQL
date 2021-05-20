@@ -80,7 +80,7 @@ app.get('/edit-form', function (req, res, next) {
   context.weight = req.query.weight
   context.date = req.query.date
   context.unit = req.query.unit
-  //console.log(getFormattedDate(req.query.date))
+  console.log(getFormattedDate(req.query.date))
   res.render('edit-form', context);
 });
 
