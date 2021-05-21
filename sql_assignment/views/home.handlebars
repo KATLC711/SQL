@@ -34,9 +34,7 @@
                     <td>{{this.weight}}</td>
                     <td>{{this.date}}</td>
                     <td>{{this.unit}}</td>
-                    <td><a href="/delete?id={{this.id}}">Delete</a></td>
-
-
+                    <td><button onclick="location.href = '/delete?id={{this.id}}'">Edit</button></td>
                     <td><button
                             onclick="location.href = '/edit-form?id={{this.id}}&name={{this.name}}&reps={{this.reps}}&weight={{this.weight}}&date={{this.date}}&unit={{this.unit}}'">Edit</button>
 
