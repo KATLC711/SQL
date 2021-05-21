@@ -1,0 +1,11 @@
+
+body {
+    background-color:#217aff;
+    text-align: center;
+}
+
+.edit-form {
+margin:auto;
+border-style: solid;
+padding:25px;
+}

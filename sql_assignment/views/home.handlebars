@@ -1,56 +1,74 @@
-<h1>Here's your table</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/home.css">
+</head>
 
-    <form action="insert" method="GET">
-        <label>name</label><br>
-        <input type="text" name="name" required><br>
-        <label>reps</label><br>
-        <input type="number" name="reps" required><br>
-        <label>weight</label><br>
-        <input type="number" name="weight" required><br>
-        <label>date</label><br>
-        <input type="date" name="date" required><br>
-        <label>unit</label><br>
-        <input type="text" name="unit" required><br>
-        <button type="submit">SUBMIT</button>
-    </form>
-
-</div>
-<br>
+<body>
 
 
+    <h1>Here's your table</h1>
+
+    <div class="content-table">
+
+        <form action="insert" method="GET">
+            <label>Name</label><br>
+            <input type="text" name="name" required><br>
+            <label>Reps</label><br>
+            <input type="number" name="reps" required><br>
+            <label>Weight</label><br>
+            <input type="number" name="weight" required><br>
+            <label>Date</label><br>
+            <input type="date" name="date" required><br>
+            <label>Unit</label><br>
+            <input type="text" name="unit" required><br>
+            <button type="submit">SUBMIT</button>
+        </form>
+    </div>
+    <br>
 
 
-<table>
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>reps</th>
-            <th>weight</th>
-            <th>date</th>
-            <th>unit</th>
-            <th>add</th>
-            <th>edit</th>
-        </tr>
-    </thead>
-    <tbody>
 
-        {{#each results}}
-        <tr>
-            <td>{{this.id}}</td>
-            <td>{{this.name}}</td>
-            <td>{{this.reps}}</td>
-            <td>{{this.weight}}</td>
-            <td>{{this.date}}</td>
-            <td>{{this.unit}}</td>
-            <td><a href="/delete?id={{this.id}}">Delete</a></td>
-            <td><a
-                    href="/edit-form?id={{this.id}}&name={{this.name}}&reps={{this.reps}}&weight={{this.weight}}&date={{this.date}}&unit={{this.unit}}">Edit</a>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
+    <div class="content-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>reps</th>
+                    <th>weight</th>
+                    <th>date</th>
+                    <th>unit</th>
+                    <th>add</th>
+                    <th>edit</th>
+                </tr>
+            </thead>
+            <tbody>
 
-</table>
+                {{#each results}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.reps}}</td>
+                    <td>{{this.weight}}</td>
+                    <td>{{this.date}}</td>
+                    <td>{{this.unit}}</td>
+                    <td><a href="/delete?id={{this.id}}">Delete</a></td>
+                    <td><a
+                            href="/edit-form?id={{this.id}}&name={{this.name}}&reps={{this.reps}}&weight={{this.weight}}&date={{this.date}}&unit={{this.unit}}">Edit</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+
+</html>

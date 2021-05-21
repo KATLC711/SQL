@@ -1,21 +1,36 @@
-<h1>Here's your table</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Form</title>
+    <link rel="stylesheet" href="/public/edit-form.css">
+</head>
 
-    <form action="edit" method="GET">
-        <input type="hidden" name="id" value={{id}} required><br>
-        <label>name</label><br>
-        <input type="text" name="name" value={{name}} required><br>
-        <label>reps</label><br>
-        <input type="number" name="reps" value={{reps}} required><br>
-        <label>weight</label><br>
-        <input type="number" name="weight" value={{weight}} required><br>
-        <label>date</label><br>
-        <input type="date" name="date" value={{date}} required><br>
-        <label>unit</label><br>
-        <input type="text" name="unit" value={{unit}} required><br>
-        <button type="submit">SUBMIT</button>
-    </form>
+<body>
+    <h1>Please Edit the following record.</h1>
 
-</div>
-<br>
+    <div class="edit-form">
+
+        <form action="edit" method="GET">
+            <input type="hidden" name="id" value={{id}} required><br>
+            <label>Name</label><br>
+            <input type="text" name="name" value={{name}} required><br>
+            <label>Reps</label><br>
+            <input type="number" name="reps" value={{reps}} required><br>
+            <label>Weight</label><br>
+            <input type="number" name="weight" value={{weight}} required><br>
+            <label>Date</label><br>
+            <input type="date" name="date" value={{date}} required><br>
+            <label>Unit</label><br>
+            <input type="text" name="unit" value={{unit}} required><br>
+            <button type="submit">SUBMIT</button>
+        </form>
+
+    </div>
+    <br>
+</body>
+
+</html>
