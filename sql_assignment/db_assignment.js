@@ -80,7 +80,7 @@ app.get('/edit-form', function (req, res, next) {
   context.name = req.query.name
   context.reps = req.query.reps
   context.weight = req.query.weight
-  context.date = req.query.date
+  context.date = getFormattedDateYMR(req.query.date)
   context.unit = req.query.unit
   //console.log(getFormattedDate(req.query.date))
   res.render('edit-form', context);
@@ -148,6 +148,26 @@ function getFormattedDate(date_unformmated) {
   day = day.length > 1 ? day : '0' + day;
 
   final = month + '-' + day + '-' + year;
+
+  return final.toString();
+}
+
+
+
+
+function getFormattedDateYMR(date_unformmated) {
+
+  var date = new Date(date_unformmated)
+
+  var year = date.getFullYear();
+
+  var month = (1 + date.getMonth()).toString();
+  month = month.length > 1 ? month : '0' + month;
+
+  var day = date.getDate().toString();
+  day = day.length > 1 ? day : '0' + day;
+
+  final = year + '-' + month + '-' + day;
 
   return final.toString();
 }
