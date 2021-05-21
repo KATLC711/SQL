@@ -147,7 +147,7 @@ function getFormattedDate(date_unformmated) {
   var day = date.getDate().toString();
   day = day.length > 1 ? day : '0' + day;
 
-  final = year + '-' + month + '-' + day;
+  final = month + '-' + day + '-' + year;
 
   return final.toString();
 }
